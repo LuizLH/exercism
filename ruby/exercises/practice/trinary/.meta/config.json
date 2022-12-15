@@ -1,0 +1,30 @@
+{
+  "authors": [
+    "kytrinyx"
+  ],
+  "contributors": [
+    "budmc29",
+    "cadwallion",
+    "haus",
+    "hilary",
+    "iHiD",
+    "Insti",
+    "kotp",
+    "nathanbwright",
+    "tryantwit"
+  ],
+  "files": {
+    "solution": [
+      "trinary.rb"
+    ],
+    "test": [
+      "trinary_test.rb"
+    ],
+    "example": [
+      ".meta/example.rb"
+    ]
+  },
+  "blurb": "Convert a trinary number, represented as a string (e.g. '102012'), to its decimal equivalent using first principles.",
+  "source": "All of Computer Science",
+  "source_url": "http://www.wolframalpha.com/input/?i=binary&a=*C.binary-_*MathWorld-"
+}
