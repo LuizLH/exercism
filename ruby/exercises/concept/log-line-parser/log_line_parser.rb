@@ -1,17 +1,32 @@
+# LogLineParser.new('[ERROR]: Invalid operation').message
+# => "Invalid operation"
+
+# LogLineParser.new("[WARNING]:  Disk almost full\r\n").message
+# => "Disk almost full"
+
+# LogLineParser.new('[ERROR]: Invalid operation').log_level
+# => "error"
+
+# LogLineParser.new('[INFO]: Operation completed').reformat
+# => "Operation completed (info)"
 class LogLineParser
   def initialize(line)
     @line = line
   end
 
   def message
-    raise 'Please implement the LogLineParser#message method'
+    ini = @line.chomp.index(/:/) + 2
+    last = @line.chomp.length
+    @line[ini, last].strip
   end
 
   def log_level
-    raise 'Please implement the LogLineParser#log_level method'
+    ini = @line.chomp.index(/\[/) + 1
+    last = @line.chomp.index(/\]/) - 1
+    @line[ini, last].downcase
   end
 
   def reformat
-    raise 'Please implement the LogLineParser#reformat method'
+    message + ' (' + log_level + ')'
   end
 end
