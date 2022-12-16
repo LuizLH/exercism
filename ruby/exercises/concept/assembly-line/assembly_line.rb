@@ -9,18 +9,19 @@ class AssemblyLine
   end
 
   def production_rate_per_hour
-    total = @speed * 221
+    success_rate = if @speed <= 4
+                     1
+                   elsif @speed <= 8
+                     0.9
+                   elsif @speed == 9
+                     0.8
+                   else
+                     0.77
+                   end
 
-    case @speed
-    when 1..4 then (total * 100) / 100.to_f
-    when 5..8 then (total * 90) / 100.to_f
-    when 9 then (total * 80) / 100.to_f
-    when 10 then (total * 77) / 100.to_f
-    else 0
-    end
+    @speed * 221 * success_rate
   end
 
-  # calculate how many completed, working cars are produced per minute.
   def working_items_per_minute
     (production_rate_per_hour / 60).to_i
   end
