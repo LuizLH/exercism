@@ -1,4 +1,4 @@
-# BirdCount
+# Refactoring to ruby way
 class BirdCount
   def self.last_week
     [0, 2, 5, 3, 7, 8, 4]
@@ -9,30 +9,18 @@ class BirdCount
   end
 
   def yesterday
-    @birds_per_day[@birds_per_day.count - 2]
+    @birds_per_day[-2]
   end
 
   def total
-    t = 0
-    @birds_per_day.each do |d|
-      t += d
-    end
-    t
+    @birds_per_day.sum
   end
 
   def busy_days
-    ct = 0
-    @birds_per_day.each do |d|
-      ct += 1 if d >= 5
-    end
-    ct
+    @birds_per_day.count { |d| d >= 5 }
   end
 
   def day_without_birds?
-    result = false
-    @birds_per_day.each do |d|
-      result = true if d.zero?
-    end
-    result
+    @birds_per_day.include?(0)
   end
 end
