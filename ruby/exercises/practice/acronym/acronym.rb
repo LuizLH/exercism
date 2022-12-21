@@ -1,7 +1,8 @@
-=begin
-Write your code for the 'Acronym' exercise in this file. Make the tests in
-`acronym_test.rb` pass.
+# Acronym
+class Acronym
+  def self.abbreviate(acron)
+    list = acron.gsub(/[-]/, ' ').split(' ')
 
-To get started with TDD, see the `README.md` file in your
-`ruby/acronym` directory.
-=end
+    list.map { |a| (a[0]).to_s.upcase }.join
+  end
+end
