@@ -1,23 +1,13 @@
 class Hamming
- 
   def self.compute(d1, d2)
-    raise ArgumentError.new("Strands don't have same length") unless d1.length == d2.length
+    raise ArgumentError, "Strands don't have same length" unless d1.length == d2.length
 
     ct = 0
-    if d1.length > 1
-      @dna1 = d1.chars
-      @dna2 = d2.chars
-
-      @dna1.each_with_index do |d, idx|
-      if d != @dna2[idx]
-        ct = ct + 1
-      end
-      end
-    elsif d1.length == 1
-      if d1 != d2
-        ct = 1
-      end
+    
+    d1.each_char.with_index do |char, idx|
+      ct += 1 if char != d2[idx]
     end
+    
     ct
   end
-end
+end  
