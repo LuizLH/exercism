@@ -1,7 +1,29 @@
-=begin
-Write your code for the 'Isogram' exercise in this file. Make the tests in
-`isogram_test.rb` pass.
+# Examples of isograms:
+# lumberjacks
+# background
+# downstream
+# six-year-old
+# The word isograms, however, is not an isogram, because the s repeats.
+class Isogram
 
-To get started with TDD, see the `README.md` file in your
-`ruby/isogram` directory.
-=end
+  def self.isogram?(input)
+    result = true
+
+    if !input.empty?
+      dict = Hash.new
+      dict.default = 0
+      input.delete("-").delete(" ").downcase.each_char.map { |e| dict[e] = dict[e] + 1  }
+
+      dict.each_value do |value|
+        if (value > 1)
+          result = false 
+          break
+        end 
+      end
+
+    end
+
+    result
+  end
+
+end
