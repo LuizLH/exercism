@@ -5,25 +5,10 @@
 # six-year-old
 # The word isograms, however, is not an isogram, because the s repeats.
 class Isogram
-
   def self.isogram?(input)
-    result = true
-
-    if !input.empty?
-      dict = Hash.new
-      dict.default = 0
-      input.delete("-").delete(" ").downcase.each_char.map { |e| dict[e] = dict[e] + 1  }
-
-      dict.each_value do |value|
-        if (value > 1)
-          result = false 
-          break
-        end 
-      end
-
-    end
-
-    result
+    input_chars = input.downcase.gsub(/[\s-]/, '')
+    unique_chars = input_chars.chars.uniq
+    
+    unique_chars.length == input_chars.length
   end
-
 end
