@@ -4,6 +4,7 @@
 # downstream
 # six-year-old
 # The word isograms, however, is not an isogram, because the s repeats.
+
 class Isogram
   def self.isogram?(input)
     input_chars = input.downcase.gsub(/[\s-]/, '')
