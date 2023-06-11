@@ -5,6 +5,7 @@ class Luhn
  
   def initialize()
 
+    
   end
   
 end
